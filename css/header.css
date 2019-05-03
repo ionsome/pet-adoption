@@ -1,0 +1,84 @@
+header {
+    background: #28B2D0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.header-left {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+}
+
+.header-center {
+    display: block;
+    width: 60%;
+    height: 100%;
+}
+
+.header-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+}
+
+.header-center nav {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+#first-header-button {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.header-button {
+    background-color: #28B2D0;
+    border-left-width: 1px;
+    border-left-color: white;
+    border-left-style: solid;
+    border-width: 1px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.header-button:hover {
+    background-color: rgb(53, 190, 221);
+}
+
+.header-button:active {
+    background-color:rgb(38, 164, 192);
+}
+
+.header-logo {
+    font-family: 'Satisfy', cursive;
+    font-size: 28px;
+    text-align: center;
+    align-self: center;
+}
+
+.header-login {
+    text-align: center;
+    padding-right: 6px;
+}
