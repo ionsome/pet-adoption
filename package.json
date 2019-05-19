@@ -1,22 +1,28 @@
 {
-  "name": "pet-adoption",
+  "name": "tasks-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "start" : "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ma007ks/pet-adoption.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ma007ks/pet-adoption/issues"
-  },
-  "homepage": "https://github.com/Ma007ks/pet-adoption#readme",
+  "keywords": [
+    "Express",
+    "RestAPI",
+    "MongoDB",
+    "Mongoose",
+    "Notes"
+  ],
+  "author": "callicoder",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "bcrypt": "*",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "*",
+    "cors": "*",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.8",
+    "path": "^0.12.7",
+    "uniqid": "*"
   }
 }
