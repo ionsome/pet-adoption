@@ -35,7 +35,6 @@ exports.authMiddleware = (req, res, next) => {
     if (req.cookies.sid) {
         SessionController.getUsername(req.cookies.sid)
             .then(username => {
-                console.log(username);
                 req.username = username;
                 next();
             })
@@ -49,7 +48,6 @@ exports.authMiddleware = (req, res, next) => {
 
 exports.authWrapper = (next) => {
     return (req, res) => {
-        console.log('checking');
         if (req.username) {
             next(req, res);
         } else {
@@ -72,6 +70,7 @@ exports.login = (req, res) => {
                         .then(createdSessionId => {
                             res.cookie('sid', createdSessionId, {httpOnly: false});
                             res.send(createdSessionId);
+                            console.log(username + " logged")
                         })
                         .catch(err => {
                             res.status(500).send('Cannot create session.');
