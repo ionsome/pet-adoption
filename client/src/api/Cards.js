@@ -56,7 +56,7 @@ export default {
       });
    },
 
-   edit: function (id, text) {
+   edit: function (id, props) {
       const requestUrl = BL_URL + 'cards/' + id;
 
       const requestOptions = {
@@ -66,7 +66,10 @@ export default {
             'Content-Type': 'application/json'
          },
          body: JSON.stringify({
-            'description': text
+            'name' : props.name,
+            'sex' : props.sex,
+            'age' : props.age,
+            'bio' : props.bio
          })
       };
 
@@ -141,7 +144,6 @@ export default {
             'Content-Type': 'application/json'
          },
          body: JSON.stringify({
-            'description': props.name,
             'name' : props.name,
             'sex' : props.sex,
             'age' : props.age,

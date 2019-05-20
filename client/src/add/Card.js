@@ -6,7 +6,7 @@ class Card extends Component {
   constructor(props) {
     super(props);
 
-    this.state.text = props.info.name;
+    this.state.name = props.info.name;
     this.state.age = props.info.age;
     this.state.sex = props.info.sex;
     this.state.bio = props.info.bio;
@@ -22,15 +22,10 @@ class Card extends Component {
   }
 
   saveClickHandler = () => {
-    console.log('save');
     this.setState({
       editing: false
     });
-    this.props.editCardHandler(this.props.info._id, this.state.text);
-  }
-
-  inputChangeHandler = (event) => {
-    this.setState({ text: event.target.value });
+    this.props.editCardHandler(this.props.info._id, this.state);
   }
 
   render() {
@@ -38,15 +33,26 @@ class Card extends Component {
 
     if (this.state.editing) {
       cardContent = (
-        <p className="card-text">
-          <input onChange={this.inputChangeHandler} value={this.state.text} className="form-control mr-sm-2" type="text" />
-        </p>
+        <div className="mb-3">
+          <p className="card-text">
+            <input onChange={(event) => { this.setState({ name: event.target.value }) }} value={this.state.name} className="form-control mr-sm-2" type="text" />
+          </p>
+          <p className="card-text" onClick={this.textClickHandler}>
+            Sex: {this.state.sex}
+          </p>
+          <p className="card-text" onClick={this.textClickHandler}>
+            Age: {this.state.age}
+          </p>
+          <p className="card-text" onClick={this.textClickHandler}>
+            <input onChange={(event) => { this.setState({ bio: event.target.value }) }} value={this.state.bio} className="form-control mr-sm-2" type="text" />
+          </p>
+        </div>
       );
     } else {
       cardContent = (
         <div className="mb-3">
           <p className="card-text" onClick={this.textClickHandler}>
-            Name: {this.state.text}
+            Name: {this.state.name}
           </p>
           <p className="card-text" onClick={this.textClickHandler}>
             Sex: {this.state.sex}

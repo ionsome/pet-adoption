@@ -36,19 +36,18 @@ class Task extends Component {
   render() {
     let cardContent;
 
-
     cardContent = (
       <div className="mb-3">
-        <p className="card-text" onClick={this.textClickHandler}>
+        <p className="card-text">
           Name: {this.state.text}
         </p>
-        <p className="card-text" onClick={this.textClickHandler}>
+        <p className="card-text">
           Sex: {this.state.sex}
         </p>
-        <p className="card-text" onClick={this.textClickHandler}>
+        <p className="card-text">
           Age: {this.state.age}
         </p>
-        <p className="card-text" onClick={this.textClickHandler}>
+        <p className="card-text">
           Bio: {this.state.bio}
         </p>
       </div>
