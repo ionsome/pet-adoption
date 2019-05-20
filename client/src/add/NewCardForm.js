@@ -65,8 +65,8 @@ class NewCardForm extends Component {
 
                         <Form.Group controlId="exampleForm.ControlTextarea1" className="ml-3">
                             <Form.Control onChange={(event) => { this.setState({ bio: event.target.value })}} 
-                            as="textarea" rows="4" placeholder="Информация о питомце (140 символов)" maxLength="140" 
-                            name="bio" value={this.state.bio}/>
+                            as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140" 
+                            name="bio" value={this.state.bio} className="noresize"/>
                         </Form.Group>
                     </div>
 

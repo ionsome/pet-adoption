@@ -26,13 +26,14 @@ class CardsPage extends Component {
     }
 
     addCardHandler = (props) => {
+        console.log(props)
         Cards.add(props).then(() => {
             this.reloadCards();
         })
     }
 
-    editCardHandler = (id, text) => {
-        Cards.edit(id, text).then(() => {
+    editCardHandler = (id, props) => {
+        Cards.edit(id, props).then(() => {
             this.reloadCards();
         })
     }
