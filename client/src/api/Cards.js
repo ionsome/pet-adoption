@@ -16,10 +16,10 @@ export default {
          fetch(requestUrl, requestOptions)
             .then(res => {
                if (res.ok) {
-                  console.log('Task deleted successfully');
+                  console.log('Card deleted successfully');
                   resolve();
                } else {
-                  console.log('Couldn\'t delete task');
+                  console.log('Couldn\'t delete card');
                   reject();
                }
             })
@@ -77,10 +77,10 @@ export default {
          fetch(requestUrl, requestOptions)
             .then(res => {
                if (res.ok) {
-                  console.log('Task updated successfully');
+                  console.log('Card updated successfully');
                   resolve();
                } else {
-                  console.log('Couldn\'t update task');
+                  console.log('Couldn\'t update card');
                   reject();
                }
             })
@@ -106,7 +106,7 @@ export default {
                resolve(tasks);
             })
             .catch(err => {
-               console.log('Couldn\'t load tasks');
+               console.log('Couldn\'t load cards');
                console.log(err);
                reject();
             })
@@ -129,7 +129,7 @@ export default {
                resolve(tasks);
             })
             .catch(err => {
-               console.log('Couldn\'t load tasks');
+               console.log('Couldn\'t load cards');
                console.log(err);
                reject();
             })

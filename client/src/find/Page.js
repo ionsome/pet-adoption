@@ -25,8 +25,10 @@ class FindPage extends Component {
     render() {
         let pageContent;
         pageContent = (
-            <div>
-                <CardList Cards={this.state.Cards} />
+            <div className="body">
+                <div className="landcontent">
+                    <CardList Cards={this.state.Cards} />
+                </div>
             </div>
         );
         return pageContent;

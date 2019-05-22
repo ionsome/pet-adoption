@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Satisfy');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-.card {
-  margin-top: 20px;
-}
-
 .button-margin {
   margin-right: 10px;
+}
+
+.card {
+  margin-bottom: 30px;
 }
 
 .container {

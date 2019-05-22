@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Task extends Component {
+class Card extends Component {
   state = {};
 
   constructor(props) {
@@ -60,7 +60,7 @@ class Task extends Component {
 
     return (
       <div className="col col-12 col-md-6 col-lg-4">
-        <div className="card" style={{ width: '18rem' }}>
+        <div className="card">
           <div className="card-body">
             {cardContent}
             {seeButton}
@@ -71,4 +71,4 @@ class Task extends Component {
   }
 }
 
-export default Task;
+export default Card;

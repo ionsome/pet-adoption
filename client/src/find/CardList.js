@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Card from './Card';
 
 
-class TaskList extends Component {
+class CardList extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row" id="task-list">
-                    {this.props.Cards.map((task) => {
-                        return (<Card key={task._id} info={task} />)
+                <div className="row" id="card-list">
+                    {this.props.Cards.map((card) => {
+                        return (<Card key={card._id} info={card} />)
                     })}
                 </div>
             </div>
@@ -16,4 +16,4 @@ class TaskList extends Component {
     }
 }
 
-export default TaskList;
+export default CardList;
