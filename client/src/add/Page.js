@@ -85,7 +85,13 @@ class CardsPage extends Component {
             )
         }
 
-        return pageContent;
+        return (
+            <div className="body">
+                <div className="landcontent">
+                    {pageContent}
+                </div>
+            </div>
+        );
     }
 }
 
