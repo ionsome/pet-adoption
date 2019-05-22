@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter as Route, Router, Link } from "react-router-dom";
 import User from '../api/User';
 import logo from '../images/paw.png';
+import house from '../images/dog_house.png';
 
+const styles = {
+    link: {
+      color: "white",
+      textDecoration: "none"
+    },
+  };
 
 class Nav extends Component {
     state = {};
@@ -48,52 +55,42 @@ class Nav extends Component {
     }
 
     render() {
-        let authButtons;
+        let authButton;
 
         if (this.props.isAuthorized) {
-            authButtons = (<button onClick={this.logoutHandler} className="btn btn-outline-danger my-2 my-sm-0" id="delete-all-button">Log Out</button>)
+           authButton = (
+                <Link class="header-button" id="first-header-button" style={styles.link} onClick={this.logoutHandler}>
+                    <p class="header-login">Выйти</p>
+                    <img src={house} height="32"></img>
+                </Link>
+            )
 
         } else {
-            authButtons = (<Link to="/auth/"><button className="btn btn-outline-success my-2 my-sm-0" id="delete-all-button">Log In</button></Link>)
+            authButton = (
+                <Link class="header-button" id="first-header-button" style={styles.link} to="/auth/">
+                    <p class="header-login">Войти</p>
+                    <img src={house} height="32"></img>
+                </Link>
+            )
         }
 
         return (
-            <nav className="navbar navbar-expand-md bg-info">
-                <img src={logo} alt="Logo" height="48" />
-                <div className="navbar-brand header-logo">
-                    <Link className="nav-link text-white display-4" to="/">Pet adoption</Link>
-                </div>
-
-                <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarCollapse">
-                    <div className="px-5">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link text-white header-button" to="/find/">Найти</Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="px-5">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link text-white" to="/add/">Отдать</Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="px-5">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link text-white" to="/item/">Статьи</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <span className="nav-link text-white">{this.state.authText}</span>
-                    </li>
-                </ul>
-                {authButtons}
-            </nav>
+            <div class="header">
+			<div class="header-left">
+				<img src={logo} height="48" vspace="12"></img>
+				<Link class="header-logo" style={styles.link} to="/">Pet Adoption</Link>
+			</div>
+			<div class="header-center">
+				<nav>
+					<Link class="header-button" id="first-header-button" style={styles.link} to="/find/">Найти</Link>
+					<Link class="header-button" style={styles.link} to="/add/">Отдать</Link>
+					<Link class="header-button" style={styles.link} to="/item/">Статьи</Link>
+				</nav>
+			</div>
+			<div class="header-right">
+                {authButton}
+			</div>
+		</div>
         );
     }
 }

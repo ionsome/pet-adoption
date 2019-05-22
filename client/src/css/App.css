@@ -1,11 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Satisfy');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .card {
   margin-top: 20px;
-}
-
-#delete-all-button {
-  margin-right: 10px;
 }
 
 .button-margin {
@@ -22,13 +19,6 @@
 
 .width100 {
   width: 100%;
-}
-
-.header-logo {
-  font-family: 'Satisfy', cursive;
-  font-size: 28px;
-  text-align: center;
-  align-self: center;
 }
 
 #tagline {

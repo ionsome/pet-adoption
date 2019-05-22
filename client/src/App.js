@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/App.css';
 import './css/bootstrap.min.css';
+import './css/header.css';
 import Nav from './components/Nav';
 import MainPage from './main/Page';
 import FindPage from './find/Page';
