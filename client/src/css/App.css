@@ -35,10 +35,13 @@
   z-index: 1;
 }
 
-.body {
-  font-family: "Roboto";
+body {
   font-size: 20px;
+  font-family: "Roboto";
   background-color: #F3F5F5;
+}
+
+.body {
   display: flex;
   align-items: center;
   justify-content: center;
