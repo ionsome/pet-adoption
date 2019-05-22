@@ -77,8 +77,10 @@ class Nav extends Component {
         return (
             <div class="header">
 			<div class="header-left">
-				<img src={logo} height="48" vspace="12"></img>
-				<Link class="header-logo" style={styles.link} to="/">Pet Adoption</Link>
+                <Link class="header-logo" style={styles.link} to="/">
+				    <img src={logo} height="48" vspace="12"></img>
+				    <p>Pet Adoption</p>
+                </Link>
 			</div>
 			<div class="header-center">
 				<nav>
