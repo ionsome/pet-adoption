@@ -42,7 +42,7 @@ mongoose.connect(dbConfig.url, {
 // define a simple route
 app.get('/api/testroute', (req, res) => {
     res.cookie('test', 'testval');
-    res.json({ "message": "Welcome to Tasks application." });
+    res.json({ "message": "Welcome to Pet Adoption application." });
 });
 
 require('./app/routes/card.routes.js')(app);
