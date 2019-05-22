@@ -12,6 +12,7 @@
 .header-left {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 200px;
 }
 
@@ -68,9 +69,14 @@
 .header-logo {
     color: white;
     font-family: 'Satisfy', cursive;
+    display: flex;
     font-size: 28px;
     text-align: center;
-    align-self: center;
+    align-items: center;
+}
+
+.header-logo p {
+    margin: 0;
 }
 
 .header-login {
