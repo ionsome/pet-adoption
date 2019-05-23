@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ToggleButtonGroup, ToggleButton, Form, Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
 
 class Card extends Component {
   state = {};
@@ -15,7 +16,6 @@ class Card extends Component {
   }
 
   textClickHandler = () => {
-    console.log('text click');
     this.setState({
       editing: true
     });
@@ -28,6 +28,13 @@ class Card extends Component {
     this.props.editCardHandler(this.props.info._id, this.state);
   }
 
+  cancelClickHandler = () => {
+    this.setState({
+      editing: false
+    });
+    //this.props.editCardHandler(this.props.info._id, this.state);
+  }
+
   render() {
     let cardContent;
 
@@ -37,15 +44,34 @@ class Card extends Component {
           <p className="card-text">
             <input onChange={(event) => { this.setState({ name: event.target.value }) }} value={this.state.name} className="form-control mr-sm-2" type="text" />
           </p>
-          <p className="card-text" onClick={this.textClickHandler}>
-            Sex: {this.state.sex}
-          </p>
-          <p className="card-text" onClick={this.textClickHandler}>
-            Age: {this.state.age}
-          </p>
-          <p className="card-text" onClick={this.textClickHandler}>
-            <input onChange={(event) => { this.setState({ bio: event.target.value }) }} value={this.state.bio} className="form-control mr-sm-2" type="text" />
-          </p>
+
+          <ButtonToolbar className='mb-3'>
+            <ToggleButtonGroup type="radio" name="sex"
+              onChange={(event) => { this.setState({ sex: event }) }}
+              value={this.state.sex}
+            >
+              <ToggleButton value="Мальчик">Мальчик</ToggleButton>
+              <ToggleButton value="Девочка">Девочка</ToggleButton>
+              <ToggleButton value="Неизвестно">Неизвестно</ToggleButton>
+            </ToggleButtonGroup>
+          </ButtonToolbar>
+
+          <ButtonToolbar className='mb-3'>
+            <ToggleButtonGroup type="radio" name="age" defaultValue="0-2"
+              onChange={(event) => { this.setState({ age: event }) }}
+              value={this.state.age}
+            >
+              <ToggleButton value="0-2">0-2</ToggleButton>
+              <ToggleButton value="3-6">3-6</ToggleButton>
+              <ToggleButton value="7+">7+</ToggleButton>
+            </ToggleButtonGroup>
+          </ButtonToolbar>
+
+          <Form.Group>
+            <Form.Control onChange={(event) => { this.setState({ bio: event.target.value }) }}
+              as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140"
+              name="bio" value={this.state.bio} className="noresize" />
+          </Form.Group>
         </div>
       );
     } else {
@@ -67,19 +93,27 @@ class Card extends Component {
       );
     }
 
+    let removeButton;
     let saveButton;
+    let cancelButton;
+
+    removeButton = (<a href="#" onClick={(e) => { this.props.deleteCardHandler(this.props.info._id) }} className="btn btn-danger">Удалить</a>);
 
     if (this.state.editing) {
       saveButton = (<a href="#" onClick={this.saveClickHandler} className="btn btn-outline-success task-save-button">Сохранить</a>);
+      cancelButton = (<a href="#" onClick={this.cancelClickHandler} className="btn btn-outline-info task-cancel-button">Отменить</a>);
     }
 
     return (
-      <div className="col col-12 col-md-6 col-lg-4">
-        <div className="card" style={{ width: '18rem' }}>
+      <div className="col col-12 col-md-10 col-lg-5">
+        <div className="card" style={{ width: '25rem' }}>
           <div className="card-body">
             {cardContent}
-            <a href="#" onClick={(e) => { this.props.deleteCardHandler(this.props.info._id) }} className="btn btn-danger">Удалить</a>
-            {saveButton}
+            <div>
+              {removeButton}
+              {saveButton}
+              {cancelButton}
+            </div>
           </div>
         </div>
       </div>
