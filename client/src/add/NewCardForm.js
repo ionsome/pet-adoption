@@ -37,11 +37,11 @@ class NewCardForm extends Component {
                 <div className="row">
                     <div className="col">
 
-                        <div className="col-md-6 col-lg-11 mb-3">
+                        <div className="mb-3">
                             <input onChange={(event) => { this.setState({ name: event.target.value })}} value={this.state.name} className="form-control mr-sm-2" type="text" placeholder="Имя" />
                         </div>
 
-                        <ButtonToolbar className='ml-3 mb-3'>
+                        <ButtonToolbar className='mb-3'>
                             <ToggleButtonGroup  type="radio" name="sex" defaultValue="Мальчик"
                                 value={this.state.sex}
                                 onChange={(event) => {this.setState({ sex: event}); }}
@@ -52,7 +52,7 @@ class NewCardForm extends Component {
                             </ToggleButtonGroup>
                         </ButtonToolbar>
 
-                        <ButtonToolbar className='ml-3 mb-3'>
+                        <ButtonToolbar className='mb-3'>
                             <ToggleButtonGroup type="radio" name="age" defaultValue="0-2"
                                 value={this.state.age}
                                 onChange={(event) => {this.setState({ age: event}); }}
@@ -63,7 +63,7 @@ class NewCardForm extends Component {
                             </ToggleButtonGroup>
                         </ButtonToolbar>
 
-                        <Form.Group controlId="exampleForm.ControlTextarea1" className="ml-3">
+                        <Form.Group>
                             <Form.Control onChange={(event) => { this.setState({ bio: event.target.value })}} 
                             as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140" 
                             name="bio" value={this.state.bio} className="noresize"/>
