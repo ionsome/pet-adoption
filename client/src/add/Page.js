@@ -55,7 +55,7 @@ class CardsPage extends Component {
         let pageContent;
         let myCards;
 
-        if (this.state.Cards)
+        if (this.state.Cards.length > 0)
         {
             myCards = (
             <div>
