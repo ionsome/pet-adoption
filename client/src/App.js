@@ -7,6 +7,7 @@ import MainPage from './main/Page';
 import FindPage from './find/Page';
 import AddPage from './add/Page';
 import AuthPage from './auth/Page';
+import RegPage from './reg/Page';
 import Cookies from 'js-cookie';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -49,6 +50,10 @@ class App extends Component {
                     <Route
                         path="/auth/"
                         render={(props) => <AuthPage {...props} isAuthorized={this.state.isAuthorized} authChangeHandler={this.authChangeHandler} />} />
+
+                    <Route
+                        path="/reg/"
+                        render={(props) => <RegPage {...props} isAuthorized={this.state.isAuthorized} authChangeHandler={this.authChangeHandler} />} />
                 </div>
             </Router>
         );
