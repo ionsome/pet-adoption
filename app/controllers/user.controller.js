@@ -3,8 +3,8 @@ const SessionController = require('./session.controller.js');
 const bcrypt = require('bcrypt');
 
 exports.register = (req, res) => {
-    const { username, password } = req.body;
-    const user = new User({ username, password });
+    const {firstname, lastname, username, password } = req.body;
+    const user = new User({firstname, lastname, username, password });
 
     user.save()
         .then(data => {
