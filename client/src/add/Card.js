@@ -58,7 +58,7 @@ class Card extends Component {
 
           <ButtonToolbar className='mb-3'>
             <ToggleButtonGroup type="radio" name="age"
-              onChange={(event) => { console.log(event); this.setState({ age: event }) }}
+              onChange={(event) => {this.setState({ age: event }) }}
               value={this.state.age}
             >
               <ToggleButton value="0-2">0-2</ToggleButton>
@@ -105,9 +105,9 @@ class Card extends Component {
     }
 
     return (
-      <div className="col col-12 col-md-10 col-lg-5">
-        <div className="card" style={{ width: '25rem' }}>
-          <div className="card-body">
+      <div className="col-md-5 col-lg-5"  style={{ width: '25rem' }}>
+        <div className="card">
+          <div className="card-body col-xs-1" align="center">
             {cardContent}
             <div>
               {removeButton}
