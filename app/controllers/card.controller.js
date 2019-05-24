@@ -1,5 +1,26 @@
 const Card = require('../models/card.model.js');
 
+validate = (name, age, sex, bio) => {
+
+    if (!name.match(/^(\w{2,10} ?){1,2}$/)) {
+        return "Incorrect name.";
+    }
+
+    if (!['Мальчик', 'Девочка', 'Неизвестно'].includes(sex)) {
+        return "Incorrect sex.";
+    }
+
+    if (!['0-2', '3-6', '7+'].includes(age)) {
+        return "Incorrect age."
+    }
+
+    if (bio.length > 140) {
+        return "Too long bio."
+    }
+
+    return false;
+}
+
 exports.create = (req, res) => {
 
     // Validate request
@@ -9,14 +30,36 @@ exports.create = (req, res) => {
         });
     }
 
+    const name = req.body.name.trim();
+
+    if (!req.body.sex) {
+        return res.status(400).send({
+            message: "Sex cannot be empty."
+        });
+    }
+
+    if (!req.body.age) {
+        return res.status(400).send({
+            message: "Age cannot be empty."
+        });
+    }
+
     // Create a Card
     const card = new Card({
-        name: req.body.name,
+        name: name,
         sex: req.body.sex,
         age: req.body.age,
         bio: req.body.bio,
         username: req.username
     });
+
+    const mes = validate(name, req.body.sex, req.body.sex, req.body.bio)
+    
+    if (mes) {
+        return res.status(400).send({
+            message: mes
+        });
+    };
 
     // Save Card in the database
     card.save()
@@ -73,27 +116,48 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    // Validate Request
-    if (!req.body) {
+    // Validate request
+    if (!req.body.name) {
         return res.status(400).send({
-            message: "Task content can not be empty"
+            message: "Name cannot be empty."
         });
     }
 
+    const name = req.body.name.trim();
+
+    if (!req.body.sex) {
+        return res.status(400).send({
+            message: "Sex cannot be empty."
+        });
+    }
+    if (!req.body.age) {
+        return res.status(400).send({
+            message: "Age cannot be empty."
+        });
+    }
+
+    validate(name, req.body.sex, req.body.sex, bio).then((mes) => {
+        if (mes) {
+            return res.status(400).send({
+                message: mes
+            });
+        };
+    })
+
     // Find task and update it with the request body
     Card.findByIdAndUpdate(req.params.cardId, {
-        name: req.body.name,
+        name: name,
         sex: req.body.sex,
         age: req.body.age,
         bio: req.body.bio
     })
-        .then(task => {
-            if (!task) {
+        .then(card => {
+            if (!card) {
                 return res.status(404).send({
                     message: "Card not found with id " + req.params.cardId
                 });
             }
-            res.send(task);
+            res.send(card);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).send({
@@ -108,32 +172,32 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
     Card.findByIdAndRemove(req.params.cardId)
-        .then(task => {
-            if (!task) {
+        .then(card => {
+            if (!card) {
                 return res.status(404).send({
-                    message: "Task not found with id " + req.params.cardId
+                    message: "Card not found with id " + req.params.cardId
                 });
             }
-            res.send({ message: "Task deleted successfully!" });
+            res.send({ message: "Card deleted successfully!" });
         }).catch(err => {
             if (err.kind === 'ObjectId' || err.name === 'NotFound') {
                 return res.status(404).send({
-                    message: "Task not found with id " + req.params.cardId
+                    message: "Card not found with id " + req.params.cardId
                 });
             }
             return res.status(500).send({
-                message: "Could not delete task with id " + req.params.cardId
+                message: "Could not delete card with id " + req.params.cardId
             });
         });
 };
 
 exports.deleteAll = (req, res) => {
     Card.remove({})
-        .then(task => {
-            res.send({ message: "Tasks deleted successfullly." });
+        .then(card => {
+            res.send({ message: "Cards deleted successfullly." });
         }).catch(err => {
             return res.status(500).send({
-                message: "Couldn't delete tasks."
+                message: "Couldn't delete cards."
             });
         });
 };
