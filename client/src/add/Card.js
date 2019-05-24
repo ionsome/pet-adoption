@@ -42,7 +42,7 @@ class Card extends Component {
       cardContent = (
         <div className="mb-3">
           <p className="card-text">
-            <input onChange={(event) => { this.setState({ name: event.target.value }) }} value={this.state.name} className="form-control mr-sm-2" type="text" />
+            <input onChange={(event) => { this.setState({ name: event.target.value }); }} value={this.state.name} className="form-control mr-sm-2" type="text" />
           </p>
 
           <ButtonToolbar className='mb-3'>
@@ -57,8 +57,8 @@ class Card extends Component {
           </ButtonToolbar>
 
           <ButtonToolbar className='mb-3'>
-            <ToggleButtonGroup type="radio" name="age" defaultValue="0-2"
-              onChange={(event) => { this.setState({ age: event }) }}
+            <ToggleButtonGroup type="radio" name="age"
+              onChange={(event) => { console.log(event); this.setState({ age: event }) }}
               value={this.state.age}
             >
               <ToggleButton value="0-2">0-2</ToggleButton>
@@ -68,7 +68,7 @@ class Card extends Component {
           </ButtonToolbar>
 
           <Form.Group>
-            <Form.Control onChange={(event) => { this.setState({ bio: event.target.value }) }}
+            <Form.Control onChange={(event) => { this.setState({ name: event.target.value }); }}
               as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140"
               name="bio" value={this.state.bio} className="noresize" />
           </Form.Group>
