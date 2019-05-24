@@ -35,8 +35,8 @@ class NewCardForm extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col">
 
+                    <div className="col-xs-4 col-sm-6 col-lg-4">
                         <div className="mb-3">
                             <input onChange={(event) => { this.setState({ name: event.target.value })}} value={this.state.name} className="form-control mr-sm-2" type="text" placeholder="Имя" />
                         </div>
@@ -70,11 +70,11 @@ class NewCardForm extends Component {
                         </Form.Group>
                     </div>
 
-                    <div className="col col-4 col-md-6 col-lg-4">
+                    <div className="col-sm-5 col-lg-5">
                         <input type="file" name="file" onChange={this.onChangeHandler} />
                     </div>
 
-                    <div className="col col-4 col-md-6 col-lg-4 ml-3">
+                    <div className="col-sm-2">
                         <button onClick={this.addButtonClickHandler} className="btn btn-outline-success">Добавить</button>
                     </div>
                 </div>
