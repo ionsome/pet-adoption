@@ -49,25 +49,18 @@ class CardsPage extends Component {
     render() {
         let pageContent;
 
-            pageContent = (
-                <div className="body">
-                   <div id="tagline">Lorem Ipsum Dolor Sit Amet</div>
-                    <div className="landcontent">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet sem nunc, sit amet vulputate magna ultricies luctus. Morbi pellentesque luctus aliquam. Integer pretium, lectus et pulvinar elementum, quam lorem vulputate felis, sit amet iaculis ligula nunc et lorem. Nunc at ex ultrices metus varius varius ac commodo quam. In hac habitasse platea dictumst. Curabitur suscipit mauris vel dignissim laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        </p>	
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet sem nunc, sit amet vulputate magna ultricies luctus. Morbi pellentesque luctus aliquam. Integer pretium, lectus et pulvinar elementum, quam lorem vulputate felis, sit amet iaculis ligula nunc et lorem. Nunc at ex ultrices metus varius varius ac commodo quam. In hac habitasse platea dictumst. Curabitur suscipit mauris vel dignissim laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet sem nunc, sit amet vulputate magna ultricies luctus. Morbi pellentesque luctus aliquam. Integer pretium, lectus et pulvinar elementum, quam lorem vulputate felis, sit amet iaculis ligula nunc et lorem. Nunc at ex ultrices metus varius varius ac commodo quam. In hac habitasse platea dictumst. Curabitur suscipit mauris vel dignissim laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet sem nunc, sit amet vulputate magna ultricies luctus. Morbi pellentesque luctus aliquam. Integer pretium, lectus et pulvinar elementum, quam lorem vulputate felis, sit amet iaculis ligula nunc et lorem. Nunc at ex ultrices metus varius varius ac commodo quam. In hac habitasse platea dictumst. Curabitur suscipit mauris vel dignissim laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        </p>	
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet sem nunc, sit amet vulputate magna ultricies luctus. Morbi pellentesque luctus aliquam. Integer pretium, lectus et pulvinar elementum, quam lorem vulputate felis, sit amet iaculis ligula nunc et lorem. Nunc at ex ultrices metus varius varius ac commodo quam. In hac habitasse platea dictumst. Curabitur suscipit mauris vel dignissim laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet sem nunc, sit amet vulputate magna ultricies luctus. Morbi pellentesque luctus aliquam. Integer pretium, lectus et pulvinar elementum, quam lorem vulputate felis, sit amet iaculis ligula nunc et lorem. Nunc at ex ultrices metus varius varius ac commodo quam. In hac habitasse platea dictumst. Curabitur suscipit mauris vel dignissim laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        </p>
-                    </div>
+        pageContent = (
+            <div className="body">
+                <div id="tagline" className="text-uppercase">Большое маленькое чудо</div>
+                <div className="landcontent">
+                    <p>Что такое для нас – чудо? Это когда во время вечерних прогулок тебя всегда сопровождает пушистый друг. Это когда каждое утро тебя будит нечто мягкое, прося кушать. Это когда каждый день ты слушаешь прекрасное пение своего попугая. </p>
+                    <p>Наш сайт поможет Вам найти своё маленькое большое чудо! Тут собрана информация о разных приютах и их обитателях, о брошенных на улице питомцах и просто о тех животных, которые ходят найти себе дом.</p>
+                    <p>Просматривая профили приютов или просто людей, Вы сможете найти своего друга по характеру, виду, поведению, а потом забрать себе! </p>
+                    <p>Если Вы хотите помочь пушистому другу обрести семью, то наш сайт и в этом Вам поможет. Вы можете разместить всю подробную информацию о животном - текст, фото, местоположение и многое другое. Посетители сайта смогут увидеть Ваше объявление и забрать пушистого друга себе! </p>
+                    <p>Кошки и коты, собаки и кролики, птички и рыбки – все они являются нашими друзьями. Так давайте поможем друзьям обрести свой дом!</p>
                 </div>
-            );
+            </div>
+        );
 
         return pageContent;
     }
