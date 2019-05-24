@@ -1,7 +1,7 @@
 const BL_URL = '/api/';
 
 export default {
-    register: (username, password) => {
+    register: (firstname, lastname, username, password) => {
         const requestUrl = BL_URL + 'register';
 
         const requestOptions = {
@@ -10,6 +10,8 @@ export default {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                'firstname': firstname,
+                'lastname': lastname,
                 'username': username,
                 'password': password
             })
