@@ -52,7 +52,7 @@ export default {
                 .then((res) => {
                     if (res.ok) {
                         console.log('Logged in successfully');
-                        console.log(res);;
+                        console.log(res);
                         resolve();
                     } else {
                         reject();
@@ -111,6 +111,62 @@ export default {
                 })
                 .then(res => {
                     resolve(res.username);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        });
+    },
+
+    getFirstname: () => {
+        const requestUrl = BL_URL + 'firstname';
+
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        return new Promise((resolve, reject) => {
+            fetch(requestUrl, requestOptions)
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    } else {
+                        reject();
+                    }
+                })
+                .then(res => {
+                    resolve(res.firstname);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        });
+    },
+
+    getLastname: () => {
+        const requestUrl = BL_URL + 'lastname';
+
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        return new Promise((resolve, reject) => {
+            fetch(requestUrl, requestOptions)
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    } else {
+                        reject();
+                    }
+                })
+                .then(res => {
+                    resolve(res.lastname);
                 })
                 .catch(err => {
                     console.log(err);

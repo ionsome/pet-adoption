@@ -17,13 +17,23 @@ class Nav extends Component {
     constructor(props) {
         super(props);
         this.state.authText = props.isAuthorized ? '' : 'Not authorized';
+        this.state.firstname = "firstname";
+        this.state.lastname = "lastname";
     }
 
     updateUserText() {
         User.getUsername()
             .then(username => {
                 const authText = 'Authorized as: ' + username;
-                this.setState({ authText });
+                this.setState({ authText: authText });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        User.getFirstname()
+            .then(firstname => {
+                this.setState({ firstname: firstname });
             })
             .catch(err => {
                 console.log(err);
@@ -60,7 +70,7 @@ class Nav extends Component {
         if (this.props.isAuthorized) {
            authButton = (
                 <Link class="header-button" id="first-header-button" style={styles.link} onClick={this.logoutHandler}>
-                    <p class="header-login">Выйти</p>
+                    <p class="header-login">{this.state.firstname}</p>
                     <img src={house} height="32"></img>
                 </Link>
             )

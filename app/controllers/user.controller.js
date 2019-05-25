@@ -89,3 +89,13 @@ exports.getUsername = (req, res) => {
     const username = req.username;
     res.send({username});
 }
+
+exports.getFirstname = (req, res) => {
+    const firstname = req.firstname;
+    res.send({firstname});
+}
+
+exports.getLastname = (req, res) => {
+    const lastname = req.lastname;
+    res.send({lastname});
+}
