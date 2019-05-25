@@ -14,7 +14,7 @@ class RegPage extends Component {
     }
 
     regButtonClickHandler = () => {
-        User.register(this.state.regLogin, this.state.regPassword)
+        User.register(this.state.regFirstName, this.state.regLastName, this.state.regLogin, this.state.regPassword)
             .then(res => {
                 this.setState({
                     regSuccessMessage: 'Registration successful.',
