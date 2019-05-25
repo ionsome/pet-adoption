@@ -44,10 +44,6 @@
 .header-button {
     font-size: 20px;
     background-color: #28B2D0;
-    border-left-width: 1px;
-    border-left-color: white;
-    border-left-style: solid;
-    border-width: 1px;
     text-align: center;
     cursor: pointer;
     width: 100%;
