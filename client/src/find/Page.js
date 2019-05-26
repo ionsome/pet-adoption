@@ -26,7 +26,7 @@ class FindPage extends Component {
         let pageContent;
         pageContent = (
             <div className="body">
-                <div className="landcontent">
+                <div className="col-lg-8 col-md-12 landcontent">
                     <CardList Cards={this.state.Cards} />
                 </div>
             </div>
