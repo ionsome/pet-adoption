@@ -2,7 +2,7 @@ const Card = require('../models/card.model.js');
 
 validate = (name, age, sex, bio) => {
 
-    if (!name.match(/^(\w{2,10} ?){1,2}$/)) {
+    if (!name.match(/^([А-Яа-яA-Za-z]{2,10} ?){1,2}$/)) {
         return "Incorrect name.";
     }
 
