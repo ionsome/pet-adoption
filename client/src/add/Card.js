@@ -32,7 +32,6 @@ class Card extends Component {
     this.setState({
       editing: false
     });
-    //this.props.editCardHandler(this.props.info._id, this.state);
   }
 
   render() {

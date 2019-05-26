@@ -53,7 +53,7 @@ exports.create = (req, res) => {
         username: req.username
     });
 
-    const mes = validate(name, req.body.sex, req.body.sex, req.body.bio)
+    const mes = validate(name, req.body.age, req.body.sex, req.body.bio)
     
     if (mes) {
         return res.status(400).send({
