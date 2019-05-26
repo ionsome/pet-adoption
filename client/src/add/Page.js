@@ -86,7 +86,7 @@ class CardsPage extends Component {
         }
 
         return (
-            <div className="row body">
+            <div className="row body m-0">
                 <div className="col-lg-8 col-md-12 landcontent">
                     {pageContent}
                 </div>
