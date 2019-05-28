@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { BrowserRouter as Route, Router, Link } from "react-router-dom";
+import { BrowserRouter as Route, Router, Link, withRouter } from "react-router-dom";
 import User from '../api/User';
 
 class AuthPage extends Component {
@@ -9,18 +9,26 @@ class AuthPage extends Component {
         super(props);
         this.state.authLogin = '';
         this.state.authPassword = '';
+        
+        
+        if (this.props.location.state)
+        {
+            this.state.loginSuccessMessage = this.props.location.state.loginSuccessMessage;
+        }
     }
 
     authButtonClickHandler = () => {
         User.login(this.state.authLogin, this.state.authPassword)
             .then(res => {
                 this.setState({
-                    loginSuccessMessage: 'Authorization successful.',
                     loginErrorMessage: '',
                     authLogin: '',
                     authPassword: ''
                 });
                 this.props.authChangeHandler();
+                this.props.history.push({
+                    pathname: '/find'
+                });
             })
             .catch(err => {
                 this.setState({
@@ -43,9 +51,6 @@ class AuthPage extends Component {
     render() {
         let loginSuccess;
         let loginError;
-        let regButton;
-
-        regButton = (<Link to="/reg/"><a onClick={() => {}}>Регистрация</a></Link>);
 
         if (this.state.loginSuccessMessage) {
             loginSuccess = (<div className="alert alert-success" role="alert">{this.state.loginSuccessMessage}</div>)
@@ -69,7 +74,7 @@ class AuthPage extends Component {
                                 <input onChange={this.authPasswordChangeHandler} value={this.state.authPassword} className="form-control mr-sm-2" type="password" placeholder="Пароль" /><br />
                                 <div className="d-flex flex-column">
                                     <button onClick={this.authButtonClickHandler} className="btn btn-primary" >Войти</button>
-                                    <div className="mt-4"><Link to="/reg/"><a onClick={() => {}} >Регистрация</a></Link></div>
+                                    <div className="mt-4"><Link to="/register/"><a onClick={() => {}} >Регистрация</a></Link></div>
                                 </div>
                             </div>
                         </div>
@@ -81,4 +86,4 @@ class AuthPage extends Component {
     }
 }
 
-export default AuthPage;
+export default withRouter(AuthPage);

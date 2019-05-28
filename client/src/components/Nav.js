@@ -67,7 +67,7 @@ class Nav extends Component {
 
         } else {
             authButton = (
-                <Link className="header-button" id="first-header-button" style={styles.link} to="/auth/">
+                <Link className="header-button" id="first-header-button" style={styles.link} to="/login/">
                     <p className="header-login">Войти</p>
                     <img src={house} height="32" alt="" />
                 </Link >

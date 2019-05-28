@@ -78,7 +78,7 @@ class CardsPage extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col col-12">
-                            <h3>You need to <Link to="/auth/">authorize</Link> to access this page.</h3> 
+                            <h3>You need to <Link to="/login">authorize</Link> to access this page.</h3> 
                         </div>
                     </div>  
                 </div>
