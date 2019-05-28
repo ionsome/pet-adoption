@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Route, Router, Link } from "react-router-dom";
+import { BrowserRouter as Route, Router, withRouter, Link } from "react-router-dom";
 import User from '../api/User';
 
 class RegPage extends Component {
@@ -11,6 +11,7 @@ class RegPage extends Component {
         this.state.regLastName = '';
         this.state.regLogin = '';
         this.state.regPassword = '';
+
     }
 
     regButtonClickHandler = () => {
@@ -23,6 +24,10 @@ class RegPage extends Component {
                     regPassword: '',
                     regFirstName: '',
                     regLastName: ''
+                });
+                this.props.history.push({
+                    pathname: '/login',
+                    state: { loginSuccessMessage: 'Registration successful!' }
                 });
             })
             .catch(err => {
@@ -66,30 +71,30 @@ class RegPage extends Component {
 
         return (
             <div className="text-center">
-            <div className="container">
-                <div className="row">
-                    <div className="col"></div>
-                    <div className="col col-6">
-                        <div className="jumbotron bg-blue">
-                            <h2>Регистрация</h2><br />
-                            {regSuccess}
-                            {regError}
-                            <input onChange={this.regFirstNameChangeHandler} value={this.state.regFirstName} className="form-control mr-sm-2" type="text" placeholder="Имя" /><br />
-                            <input onChange={this.regLastNameChangeHandler} value={this.state.regLastName} className="form-control mr-sm-2" type="text" placeholder="Фамилия" /><br />
-                            <input onChange={this.regLoginChangeHandler} value={this.state.regLogin} className="form-control mr-sm-2" type="text" placeholder="Логин" /><br />
-                            <input onChange={this.regPasswordChangeHandler} value={this.state.regPassword} className="form-control mr-sm-2" type="password" placeholder="Пароль" /><br />
-                            <div className="d-flex flex-column">
-                                <button onClick={this.regButtonClickHandler} className="btn btn-primary" >Регистрация</button>
-                                <div className="mt-4"><Link to="/auth/"><a onClick={() => {}} >Войти</a></Link></div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col col-6">
+                            <div className="jumbotron bg-blue">
+                                <h2>Регистрация</h2><br />
+                                {regSuccess}
+                                {regError}
+                                <input onChange={this.regFirstNameChangeHandler} value={this.state.regFirstName} className="form-control mr-sm-2" type="text" placeholder="Имя" /><br />
+                                <input onChange={this.regLastNameChangeHandler} value={this.state.regLastName} className="form-control mr-sm-2" type="text" placeholder="Фамилия" /><br />
+                                <input onChange={this.regLoginChangeHandler} value={this.state.regLogin} className="form-control mr-sm-2" type="text" placeholder="Логин" /><br />
+                                <input onChange={this.regPasswordChangeHandler} value={this.state.regPassword} className="form-control mr-sm-2" type="password" placeholder="Пароль" /><br />
+                                <div className="d-flex flex-column">
+                                    <button onClick={this.regButtonClickHandler} className="btn btn-primary" >Регистрация</button>
+                                    <div className="mt-4"><Link to="/login"><a onClick={() => { }} >Войти</a></Link></div>
+                                </div>
                             </div>
                         </div>
+                        <div className="col"></div>
                     </div>
-                    <div className="col"></div>
                 </div>
-            </div>
             </div>
         );
     }
 }
 
-export default RegPage;
+export default withRouter(RegPage);

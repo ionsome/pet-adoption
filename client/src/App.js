@@ -48,11 +48,11 @@ class App extends Component {
                         render={(props) => <AddPage {...props} isAuthorized={this.state.isAuthorized} />} />
 
                     <Route
-                        path="/auth/"
+                        path="/login/"
                         render={(props) => <AuthPage {...props} isAuthorized={this.state.isAuthorized} authChangeHandler={this.authChangeHandler} />} />
 
                     <Route
-                        path="/reg/"
+                        path="/register/"
                         render={(props) => <RegPage {...props} isAuthorized={this.state.isAuthorized} authChangeHandler={this.authChangeHandler} />} />
                 </div>
             </Router>
