@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ToggleButtonGroup, ToggleButton, Form, Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
+import collar from '../images/collar.png';
 
 class NewCardForm extends Component {
     state = {};
@@ -33,49 +34,63 @@ class NewCardForm extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
+            <div>
+                <div className="text-center">
+                    <img src={collar} height='80'className="mt-3"></img>
+                    <h2 className="mt-3">Новый подопечный</h2>
+                    <p className="lead">Здесь Вы можете заполнить форму о Вашем подопечном, который ищет новый дом.</p>
+                </div>
 
-                    <div className="col-xs-4 col-sm-6 col-lg-4">
-                        <div className="mb-3">
-                            <input onChange={(event) => { this.setState({ name: event.target.value })}} value={this.state.name} className="form-control mr-sm-2" type="text" placeholder="Имя" />
+                <div className="container">
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col-8">
+                            <div className="mb-3">
+                                <label for="name">Кличка</label>
+                                <input onChange={(event) => { this.setState({ name: event.target.value })}} value={this.state.name} className="form-control mr-sm-2" type="text" placeholder="Кличка" id="name"/>
+                            </div>
+
+                            <label for="sex" >Пол</label>
+                            <ButtonToolbar className='mb-3' id="sex">
+                                <ToggleButtonGroup  type="radio" name="sex" defaultValue="Мальчик"
+                                    value={this.state.sex}
+                                    onChange={(event) => {this.setState({ sex: event}); }}
+                                >
+                                    <ToggleButton value="Мальчик">Мальчик</ToggleButton>
+                                    <ToggleButton value="Девочка">Девочка</ToggleButton>
+                                    <ToggleButton value="Неизвестно">Неизвестно</ToggleButton>
+                                </ToggleButtonGroup>
+                            </ButtonToolbar>
+                            
+                            <label for="age" >Возраст</label>
+                            <ButtonToolbar className='mb-3' id="age">
+                                <ToggleButtonGroup type="radio" name="age" defaultValue="0-2"
+                                    value={this.state.age}
+                                    onChange={(event) => {this.setState({ age: event}); }}
+                                >
+                                    <ToggleButton value="0-2">0-2</ToggleButton>
+                                    <ToggleButton value="3-6">3-6</ToggleButton>
+                                    <ToggleButton value="7+">7+</ToggleButton>
+                                </ToggleButtonGroup>
+                            </ButtonToolbar>
+
+                            <label for="bio" >Дополнительная информация</label>
+                            <Form.Group id="bio">
+                                <Form.Control onChange={(event) => { this.setState({ bio: event.target.value })}} 
+                                as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140" 
+                                name="bio" value={this.state.bio} className="noresize"/>
+                            </Form.Group>
+
+                            <label for="file" >Фотография питомца</label>
+                            <div className="mb-4" id="file">
+                            <input type="file" name="file" onChange={this.onChangeHandler}/>
+                            </div>
+
+                            <div className="d-flex flex-column">
+                            <button onClick={this.addButtonClickHandler} className="btn btn-primary">Добавить</button>
+                            </div>
                         </div>
-
-                        <ButtonToolbar className='mb-3'>
-                            <ToggleButtonGroup  type="radio" name="sex" defaultValue="Мальчик"
-                                value={this.state.sex}
-                                onChange={(event) => {this.setState({ sex: event}); }}
-                            >
-                                <ToggleButton value="Мальчик">Мальчик</ToggleButton>
-                                <ToggleButton value="Девочка">Девочка</ToggleButton>
-                                <ToggleButton value="Неизвестно">Неизвестно</ToggleButton>
-                            </ToggleButtonGroup>
-                        </ButtonToolbar>
-
-                        <ButtonToolbar className='mb-3'>
-                            <ToggleButtonGroup type="radio" name="age" defaultValue="0-2"
-                                value={this.state.age}
-                                onChange={(event) => {this.setState({ age: event}); }}
-                            >
-                                <ToggleButton value="0-2">0-2</ToggleButton>
-                                <ToggleButton value="3-6">3-6</ToggleButton>
-                                <ToggleButton value="7+">7+</ToggleButton>
-                            </ToggleButtonGroup>
-                        </ButtonToolbar>
-
-                        <Form.Group>
-                            <Form.Control onChange={(event) => { this.setState({ bio: event.target.value })}} 
-                            as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140" 
-                            name="bio" value={this.state.bio} className="noresize"/>
-                        </Form.Group>
-                    </div>
-
-                    <div className="col-sm-5 col-lg-5">
-                        <input type="file" name="file" onChange={this.onChangeHandler} />
-                    </div>
-
-                    <div className="col-sm-2">
-                        <button onClick={this.addButtonClickHandler} className="btn btn-outline-success">Добавить</button>
+                        <div className="col"></div>
                     </div>
                 </div>
             </div>
