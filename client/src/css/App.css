@@ -61,3 +61,11 @@ body {
 .noresize {
   resize: none; 
 }
+
+@media only screen and (max-width: 420px) {
+  .small-cardform-justify {
+      display: flex;
+      justify-content: center;
+  }
+
+}
