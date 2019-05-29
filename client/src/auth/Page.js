@@ -63,9 +63,8 @@ class AuthPage extends Component {
 
             <div className="text-center">
                 <div className="container">
-                    <div className="row">
-                        <div className="col"></div>
-                        <div className="col col-6">
+                    <div className="d-flex justify-content-center">
+                        <div className="col-xl-6 col-lg-7 col-md-9 col-xs-12">
                             <div className="jumbotron">
                                 <h2>Авторизация</h2><br />
                                 {loginSuccess}
@@ -78,7 +77,6 @@ class AuthPage extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col"></div>
                     </div>
                 </div>
             </div>
