@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './css/App.css';
 import './css/bootstrap.min.css';
 import './css/header.css';
-import Nav from './components/Nav';
+import NavComponent from './components/NavComponent';
 import MainPage from './main/Page';
 import FindPage from './find/Page';
 import AddPage from './add/Page';
@@ -33,7 +33,7 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <Nav isAuthorized={this.state.isAuthorized} authChangeHandler={this.authChangeHandler} />
+                    <NavComponent isAuthorized={this.state.isAuthorized} authChangeHandler={this.authChangeHandler} />
 
                     <Route
                         exact path="/"
