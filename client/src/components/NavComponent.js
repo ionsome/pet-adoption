@@ -81,7 +81,7 @@ class NavComponent extends Component {
         }
 
         return (
-            <div className="row p-0 d-flex justify-content-around header flex-wrap">
+            <div className="row p-0 m-0 d-flex justify-content-around header flex-wrap">
                 <Link className="header-button header-logo nodecoration text-nowrap align-items-center" to="/">
                     <img src={logo} height="48" vspace="12" alt="" />
                     Pet Adoption

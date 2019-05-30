@@ -61,6 +61,7 @@
 
 .header {
     background: #28B2D0;
+    width: 100%;
 }
 
 .menu-header-button
@@ -75,9 +76,14 @@
 
     .menu-header-button
     {
-        width: 20%;
+        width: 30%;
         padding-left: 15%;
         padding-right: 15%;
     }
 
+    .header-logo {
+        font-family: 'Satisfy', cursive;
+        font-size: 28px;
+        width: 100%;
+    }    
 }

@@ -32,6 +32,8 @@ class NewCardForm extends Component {
         return true;
     }
 
+    triggerPhotoUpload = () => this.photoUpload.click();
+
     render() {
         return (
             <div className="mb-5">
@@ -73,20 +75,23 @@ class NewCardForm extends Component {
                                 </ToggleButtonGroup>
                             </div>
 
-                            <label for="bio" >Дополнительная информация</label>
+                            <label for="bio">Дополнительная информация</label>
                             <Form.Group id="bio">
                                 <Form.Control onChange={(event) => { this.setState({ bio: event.target.value })}} 
                                 as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140" 
                                 name="bio" value={this.state.bio} className="noresize"/>
                             </Form.Group>
 
-                            <label for="file" >Фотография питомца</label>
-                            <div className="mb-4" id="file">
-                            <input type="file" name="file" onChange={this.onChangeHandler}/>
+                            <label for="file" className="small-cardform-justify" >Фотография питомца</label>
+                            <div className="mb-4 mx-0 small-cardform-justify" id="file">
+                                <input ref={photoUpload => this.photoUpload = photoUpload} 
+                                type="file" name="file" onChange={this.onChangeHandler}
+                                hidden/>
+                                <button onClick={this.triggerPhotoUpload} className="btn btn-danger" for="file">Choose a file</button>
                             </div>
 
-                            <div className="d-flex flex-column">
-                            <button onClick={this.addButtonClickHandler} className="btn btn-primary">Добавить</button>
+                            <div className="d-flex flex-column small-cardform-justify">
+                                <button onClick={this.addButtonClickHandler} className="btn btn-primary">Добавить</button>
                             </div>
                         </div>
                     </div>
