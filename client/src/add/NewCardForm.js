@@ -26,6 +26,7 @@ class NewCardForm extends Component {
         this.state.sex = 'Мальчик';
         this.state.age = '0-2';
         this.state.bio = '';
+        this.state.thumbnail = '';
     }
 
     validateData() {
@@ -33,6 +34,13 @@ class NewCardForm extends Component {
     }
 
     triggerPhotoUpload = () => this.photoUpload.click();
+
+    onChangeUploadHandler = (event) => {
+        console.log(event.target.files[0]);
+        this.setState({
+            thumbnail: URL.createObjectURL(event.target.files[0])
+        })
+    }
 
     render() {
         return (
@@ -49,12 +57,12 @@ class NewCardForm extends Component {
 
                             <div className="d-flex justify-content-center" id="file">
                                 <input ref={photoUpload => this.photoUpload = photoUpload}
-                                    type="file" name="file" onChange={this.onChangeHandler}
+                                    type="file" name="file" onChange={this.onChangeUploadHandler}
                                     hidden />
-                                
+
                                 <div onClick={this.triggerPhotoUpload} className="upload-image-box" for="file">
-                                    <img 
-                                    src={paw_upload} />
+                                    <img
+                                        src={this.state.thumbnail ? this.state.thumbnail : paw_upload} />
                                     <div className="text-middle p-2">
                                         <div>Загрузить фото</div>
                                     </div>

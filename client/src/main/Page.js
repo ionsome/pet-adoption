@@ -7,43 +7,6 @@ class CardsPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state.Cards = [];
-    }
-
-    deleteAllCardsHandler = () => {
-        Cards.deleteAll().then(() => {
-            this.reloadCards();
-        })
-    }
-
-    deleteTaskHandler = (id) => {
-        Cards.delete(id).then(() => {
-            this.reloadCards();
-        })
-    }
-
-    addTaskHandler = (text) => {
-        Cards.add(text).then(() => {
-            this.reloadCards();
-        })
-    }
-
-    editTaskHandler = (id, text) => {
-        Cards.edit(id, text).then(() => {
-            this.reloadCards();
-        })
-    }
-
-    reloadCards = () => {
-        Cards.getAll().then((Cards) => {
-            this.setState({ 'Cards': Cards })
-        });
-    }
-
-    componentDidMount() {
-        if (this.props.isAuthorized) {
-            this.reloadCards();
-        }
     }
 
     render() {
