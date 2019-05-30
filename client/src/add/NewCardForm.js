@@ -12,12 +12,20 @@ class NewCardForm extends Component {
     }
 
     addButtonClickHandler = () => {
-        if (!this.validateData()) {
+        //if (!this.validateData()) {
+        //    return;
+        //}
 
-            return;
+        let stateCopy = {
+            name : this.state.name,
+            sex : this.state.sex,
+            age : this.state.age,
+            bio : this.state.bio,
+            thumbnail : this.state.thumbnail,
+            selectedPhoto : this.state.selectedPhoto
         }
-
-        this.props.addCardHandler(this.state);
+        
+        this.props.addCardHandler(stateCopy);
         this.setDefaultState();
     }
 
@@ -27,6 +35,7 @@ class NewCardForm extends Component {
         this.state.age = '0-2';
         this.state.bio = '';
         this.state.thumbnail = '';
+        this.state.selectedPhoto = '';
     }
 
     validateData() {
@@ -36,9 +45,9 @@ class NewCardForm extends Component {
     triggerPhotoUpload = () => this.photoUpload.click();
 
     onChangeUploadHandler = (event) => {
-        console.log(event.target.files[0]);
         this.setState({
-            thumbnail: URL.createObjectURL(event.target.files[0])
+            thumbnail: URL.createObjectURL(event.target.files[0]),
+            selectedPhoto: event.target.files[0]
         })
     }
 
@@ -57,14 +66,15 @@ class NewCardForm extends Component {
 
                             <div className="d-flex justify-content-center" id="file">
                                 <input ref={photoUpload => this.photoUpload = photoUpload}
-                                    type="file" name="file" onChange={this.onChangeUploadHandler}
+                                    type="file" name="photo" onChange={this.onChangeUploadHandler}
+                                    accept="image/*" 
                                     hidden />
 
                                 <div onClick={this.triggerPhotoUpload} className="upload-image-box" for="file">
                                     <img
                                         src={this.state.thumbnail ? this.state.thumbnail : paw_upload} />
                                     <div className="text-middle p-2">
-                                        <div>Загрузить фото</div>
+                                        <div>{this.state.thumbnail ? "Выбрать новое" : "Загрузить фото"}</div>
                                     </div>
                                 </div>
                             </div>

@@ -66,10 +66,10 @@ export default {
             'Content-Type': 'application/json'
          },
          body: JSON.stringify({
-            'name' : props.name,
-            'sex' : props.sex,
-            'age' : props.age,
-            'bio' : props.bio
+            'name': props.name,
+            'sex': props.sex,
+            'age': props.age,
+            'bio': props.bio
          })
       };
 
@@ -137,32 +137,44 @@ export default {
    },
 
    add: function (props) {
-      let options = {
-         method: 'POST',
-         credentials: 'include',
-         headers: {
-            'Content-Type': 'application/json'
-         },
-         body: JSON.stringify({
-            'name' : props.name,
-            'sex' : props.sex,
-            'age' : props.age,
-            'bio' : props.bio
-         })
-      };
 
       return new Promise((resolve, reject) => {
-         fetch(BL_URL + 'cards', options)
-            .then(res => res.json())
-            .then(card => {
-               console.log('Card added successfully');
-               console.log(card);
-               resolve();
-            })
-            .catch(err => {
-               console.log(err);
-               reject();
-            })
-      });
+         let data = new FormData();
+         data.append("file", props.selectedPhoto);
+         fetch(BL_URL + 'upload', {
+            method: 'POST',
+            credentials: 'include',
+            body: data
+         }).then(res => res.json())
+            .then(img_path => {
+               let opts = {
+                  method: 'POST',
+                  credentials: 'include',
+                  headers: {
+                     'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                     'name': props.name,
+                     'sex': props.sex,
+                     'age': props.age,
+                     'bio': props.bio,
+                     'img_path': img_path['message']
+                  })
+               };
+               return opts;
+            }).then((opts) => {
+               fetch(BL_URL + 'cards', opts
+               ).then(res => res.json())
+                  .then(card => {
+                     console.log('Card added successfully');
+                     console.log(card);
+                     resolve();
+                  })
+                  .catch(err => {
+                     console.log(err);
+                     reject();
+                  })
+            });
+      })
    }
 }

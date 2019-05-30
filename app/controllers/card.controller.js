@@ -1,4 +1,5 @@
 const Card = require('../models/card.model.js');
+fs = require('fs-extra');
 
 validate = (name, age, sex, bio) => {
 
@@ -23,7 +24,8 @@ validate = (name, age, sex, bio) => {
 
 exports.create = (req, res) => {
 
-    // Validate request
+    console.log(req.body);
+
     if (!req.body.name) {
         return res.status(400).send({
             message: "Name cannot be empty."
@@ -43,7 +45,9 @@ exports.create = (req, res) => {
             message: "Age cannot be empty."
         });
     }
-
+    
+    fs.unlink(req.body.img_path);
+    
     // Create a Card
     const card = new Card({
         name: name,
@@ -54,7 +58,7 @@ exports.create = (req, res) => {
     });
 
     const mes = validate(name, req.body.age, req.body.sex, req.body.bio)
-    
+
     if (mes) {
         return res.status(400).send({
             message: mes
@@ -68,6 +72,34 @@ exports.create = (req, res) => {
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while creating the card."
+            });
+        });
+};
+
+exports.uploadPhoto = (req, res) => {
+    //console.log(req.file);
+    res.send({ message: (req.file ? req.file.path : "")  });
+
+
+};
+
+exports.getPhoto = (req, res) => {
+    Photo.findById(req.params.photoId)
+        .then(card => {
+            if (!card) {
+                return res.status(404).send({
+                    message: "Task not found with id " + req.params.cardId
+                });
+            }
+            res.send(card);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "Task not found with id " + req.params.cardId
+                });
+            }
+            return res.status(500).send({
+                message: "Error retrieving task with id " + req.params.cardId
             });
         });
 };

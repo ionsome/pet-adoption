@@ -26,7 +26,6 @@ class CardsPage extends Component {
     }
 
     addCardHandler = (props) => {
-        console.log(props)
         Cards.add(props).then(() => {
             this.reloadCards();
         })
