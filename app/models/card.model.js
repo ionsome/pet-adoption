@@ -5,6 +5,7 @@ const CardSchema = mongoose.Schema({
     sex: String,
     age: String,
     bio: String,
+    photo: String,
     username: String
 }, {
     timestamps: true

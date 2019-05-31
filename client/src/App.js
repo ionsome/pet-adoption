@@ -40,19 +40,19 @@ class App extends Component {
                         render={(props) => <MainPage {...props} isAuthorized={this.state.isAuthorized} />} />
 
                     <Route
-                        path="/find/"
+                        path="/find"
                         render={(props) => <FindPage {...props} />} />
 
                     <Route
-                        path="/add/"
+                        path="/add"
                         render={(props) => <AddPage {...props} isAuthorized={this.state.isAuthorized} />} />
 
                     <Route
-                        path="/login/"
+                        path="/login"
                         render={(props) => <AuthPage {...props} isAuthorized={this.state.isAuthorized} authChangeHandler={this.authChangeHandler} />} />
 
                     <Route
-                        path="/register/"
+                        path="/register"
                         render={(props) => <RegPage {...props} isAuthorized={this.state.isAuthorized} authChangeHandler={this.authChangeHandler} />} />
                 </div>
             </Router>

@@ -27,6 +27,7 @@ app.use(user.authMiddleware);
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
+
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
@@ -37,12 +38,6 @@ mongoose.connect(dbConfig.url, {
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
-});
-
-// define a simple route
-app.get('/api/testroute', (req, res) => {
-    res.cookie('test', 'testval');
-    res.json({ "message": "Welcome to Pet Adoption application." });
 });
 
 require('./app/routes/card.routes.js')(app);

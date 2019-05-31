@@ -10,7 +10,8 @@ class Card extends Component {
     this.state.age = props.info.age;
     this.state.sex = props.info.sex;
     this.state.bio = props.info.bio;
-
+    this.state.photo = props.info.photo;
+    
     this.state.editing = false;
   }
 
@@ -36,8 +37,17 @@ class Card extends Component {
   render() {
     let cardContent;
 
+    let photoContent;
+    if (this.state.photo) {
+      photoContent = (<img src={this.state.photo} className="photo-box mb-2"></img>);
+    }
+    else {
+      photoContent = '';
+    }
+
     cardContent = (
       <div className="mb-3">
+        {photoContent}
         <p className="card-text">
           Name: {this.state.text}
         </p>

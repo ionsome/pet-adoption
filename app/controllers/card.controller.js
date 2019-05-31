@@ -1,5 +1,7 @@
 const Card = require('../models/card.model.js');
+
 fs = require('fs-extra');
+var path = require('path');
 
 validate = (name, age, sex, bio) => {
 
@@ -24,8 +26,6 @@ validate = (name, age, sex, bio) => {
 
 exports.create = (req, res) => {
 
-    console.log(req.body);
-
     if (!req.body.name) {
         return res.status(400).send({
             message: "Name cannot be empty."
@@ -45,15 +45,14 @@ exports.create = (req, res) => {
             message: "Age cannot be empty."
         });
     }
-    
-    fs.unlink(req.body.img_path);
-    
+
     // Create a Card
     const card = new Card({
         name: name,
         sex: req.body.sex,
         age: req.body.age,
         bio: req.body.bio,
+        photo: req.body.img_path,
         username: req.username
     });
 
@@ -77,31 +76,11 @@ exports.create = (req, res) => {
 };
 
 exports.uploadPhoto = (req, res) => {
-    //console.log(req.file);
     res.send({ message: (req.file ? req.file.path : "")  });
-
-
 };
 
 exports.getPhoto = (req, res) => {
-    Photo.findById(req.params.photoId)
-        .then(card => {
-            if (!card) {
-                return res.status(404).send({
-                    message: "Task not found with id " + req.params.cardId
-                });
-            }
-            res.send(card);
-        }).catch(err => {
-            if (err.kind === 'ObjectId') {
-                return res.status(404).send({
-                    message: "Task not found with id " + req.params.cardId
-                });
-            }
-            return res.status(500).send({
-                message: "Error retrieving task with id " + req.params.cardId
-            });
-        });
+    res.sendFile(path.join(__dirname, '../../uploads/', req.params.photoId));
 };
 
 exports.findAll = (req, res) => {

@@ -11,6 +11,7 @@ class Card extends Component {
     this.state.age = props.info.age;
     this.state.sex = props.info.sex;
     this.state.bio = props.info.bio;
+    this.state.photo = props.info.photo;
 
     this.state.editing = false;
   }
@@ -37,6 +38,14 @@ class Card extends Component {
   render() {
     let cardContent;
 
+    let photoContent;
+    if (this.state.photo) {
+      photoContent = (<img src={this.state.photo} className="photo-box mb-2"></img>);
+    }
+    else {
+      photoContent = '';
+    }
+    
     if (this.state.editing) {
       cardContent = (
         <div className="mb-3">
@@ -57,7 +66,7 @@ class Card extends Component {
 
           <ButtonToolbar className='mb-3'>
             <ToggleButtonGroup type="radio" name="age"
-              onChange={(event) => {this.setState({ age: event }) }}
+              onChange={(event) => { this.setState({ age: event }) }}
               value={this.state.age}
             >
               <ToggleButton value="0-2">0-2</ToggleButton>
@@ -76,6 +85,7 @@ class Card extends Component {
     } else {
       cardContent = (
         <div className="mb-3">
+          {photoContent}
           <p className="card-text" onClick={this.textClickHandler}>
             Name: {this.state.name}
           </p>
@@ -104,7 +114,7 @@ class Card extends Component {
     }
 
     return (
-      <div className="col-md-5 col-lg-5"  style={{ width: '25rem' }}>
+      <div className="col-md-5 col-lg-5" style={{ width: '25rem' }}>
         <div className="card">
           <div className="card-body col-xs-1" align="center">
             {cardContent}
