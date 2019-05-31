@@ -7,7 +7,7 @@ class CardList extends Component {
         return (
             <div className="container">
                 <div className="row " id="card-list">
-                    {this.props.Cards.reverse().map((card) => {
+                    {this.props.Cards.map((card) => {
                         return (<Card key={card._id} info={card} />)
                     })}
                 </div>
