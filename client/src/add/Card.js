@@ -139,7 +139,7 @@ class Card extends Component {
 
     return (
       <div className="col-md-5 col-lg-5" style={{ width: '25rem' }}>
-        <div className="card">
+        <div className="card card-body-size">
           <div className="card-body col-xs-1" align="center">
             {cardContent}
             <div>
