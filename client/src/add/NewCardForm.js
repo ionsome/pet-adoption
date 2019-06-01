@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import { ToggleButtonGroup, ToggleButton, Form, Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
+import { ToggleButtonGroup, ToggleButton, Form } from 'react-bootstrap';
 import collar from '../images/collar.png';
 import paw_upload from '../images/paw_upload.png'
 
 class NewCardForm extends Component {
-    state = {};
+    state = {
+        name: '',
+        sex: 'Мальчик',
+        age: '0-2',
+        bio: '',
+        thumbnail: '',
+        selectedPhoto: ''
+    };
 
-    constructor(props) {
-        super(props);
-        this.setDefaultState();
-    }
+    //constructor(props) {
+    //    super(props);
+    //}
 
     addButtonClickHandler = () => {
         //if (!this.validateData()) {
@@ -17,25 +23,26 @@ class NewCardForm extends Component {
         //}
 
         let stateCopy = {
-            name : this.state.name,
-            sex : this.state.sex,
-            age : this.state.age,
-            bio : this.state.bio,
-            thumbnail : this.state.thumbnail,
-            selectedPhoto : this.state.selectedPhoto
+            name: this.state.name,
+            sex: this.state.sex,
+            age: this.state.age,
+            bio: this.state.bio,
+            thumbnail: this.state.thumbnail,
+            selectedPhoto: this.state.selectedPhoto
         }
-        
         this.props.addCardHandler(stateCopy);
         this.setDefaultState();
     }
 
-    setDefaultState() {
-        this.state.name = '';
-        this.state.sex = 'Мальчик';
-        this.state.age = '0-2';
-        this.state.bio = '';
-        this.state.thumbnail = '';
-        this.state.selectedPhoto = '';
+    setDefaultState = () => {
+        this.setState({
+            name: '',
+            sex: 'Мальчик',
+            age: '0-2',
+            bio: '',
+            thumbnail: '',
+            selectedPhoto: ''
+        });
     }
 
     validateData() {
@@ -55,7 +62,7 @@ class NewCardForm extends Component {
         return (
             <div className="mb-5">
                 <div className="text-center">
-                    <img src={collar} height='80' className="mt-3"></img>
+                    <img src={collar} height='80' className="mt-3" alt=""></img>
                     <h2 className="mt-3">Новый подопечный</h2>
                     <p className="lead">Здесь Вы можете заполнить форму о Вашем подопечном, который ищет новый дом.</p>
                 </div>
@@ -67,12 +74,12 @@ class NewCardForm extends Component {
                             <div className="d-flex justify-content-center" id="file">
                                 <input ref={photoUpload => this.photoUpload = photoUpload}
                                     type="file" name="photo" onChange={this.onChangeUploadHandler}
-                                    accept="image/*" 
+                                    accept="image/*"
                                     hidden />
 
-                                <div onClick={this.triggerPhotoUpload} className="upload-image-box" for="file">
+                                <div onClick={this.triggerPhotoUpload} className="upload-image-box">
                                     <img
-                                        src={this.state.thumbnail ? this.state.thumbnail : paw_upload} />
+                                        src={this.state.thumbnail ? this.state.thumbnail : paw_upload} alt="" />
                                     <div className="text-middle p-2">
                                         <div>{this.state.thumbnail ? "Выбрать новое" : "Загрузить фото"}</div>
                                     </div>
@@ -80,11 +87,11 @@ class NewCardForm extends Component {
                             </div>
 
                             <div className="mb-3">
-                                <label for="name" className="small-cardform-justify">Кличка</label>
+                                <label className="small-cardform-justify">Кличка</label>
                                 <input onChange={(event) => { this.setState({ name: event.target.value }) }} value={this.state.name} className="form-control mr-sm-2" type="text" placeholder="Кличка" id="name" />
                             </div>
 
-                            <label for="sex" className="small-cardform-justify">Пол</label>
+                            <label className="small-cardform-justify">Пол</label>
                             <div className='mb-3 small-cardform-justify' id="sex">
                                 <ToggleButtonGroup type="radio" name="sex" defaultValue="Мальчик"
                                     value={this.state.sex}
@@ -96,7 +103,7 @@ class NewCardForm extends Component {
                                 </ToggleButtonGroup>
                             </div>
 
-                            <label for="age" className="small-cardform-justify" >Возраст</label>
+                            <label className="small-cardform-justify" >Возраст</label>
                             <div className='mb-3 small-cardform-justify' id="age">
                                 <ToggleButtonGroup type="radio" name="age" defaultValue="0-2"
                                     value={this.state.age}
@@ -108,7 +115,7 @@ class NewCardForm extends Component {
                                 </ToggleButtonGroup>
                             </div>
 
-                            <label for="bio">Дополнительная информация</label>
+                            <label>Дополнительная информация</label>
                             <Form.Group id="bio">
                                 <Form.Control onChange={(event) => { this.setState({ bio: event.target.value }) }}
                                     as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140"

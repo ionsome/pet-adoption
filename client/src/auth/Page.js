@@ -73,7 +73,7 @@ class AuthPage extends Component {
                                 <input onChange={this.authPasswordChangeHandler} value={this.state.authPassword} className="form-control mr-sm-2" type="password" placeholder="Пароль" /><br />
                                 <div className="d-flex flex-column">
                                     <button onClick={this.authButtonClickHandler} className="btn btn-primary" >Войти</button>
-                                    <div className="mt-4"><Link to="/register/"><a onClick={() => {}} >Регистрация</a></Link></div>
+                                    <div className="mt-4"><Link to="/register/">Регистрация</Link></div>
                                 </div>
                             </div>
                         </div>

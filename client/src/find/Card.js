@@ -42,7 +42,7 @@ class Card extends Component {
 
     let photoContent;
     if (this.state.imageData) {
-      photoContent = (<img src={this.state.imageData} className="photo-box mb-2"></img>);
+      photoContent = (<img src={this.state.imageData} className="photo-box mb-2" alt=""></img>);
     }
     else {
       photoContent = '';

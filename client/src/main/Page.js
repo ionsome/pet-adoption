@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import Cards from '../api/Cards';
 
 
 class CardsPage extends Component {
     state = {};
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         let pageContent;

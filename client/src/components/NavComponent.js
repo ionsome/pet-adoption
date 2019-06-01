@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Route, Router, Link } from "react-router-dom";
-import { Navbar, Nav, Form, Button, FormControl } from "react-bootstrap";
 
 import User from '../api/User';
 import logo from '../images/paw.png';
 import house from '../images/dog_house.png';
 
-const styles = {
-    link: {
-        color: "white",
-        textDecoration: "none"
-    },
-};
 
 class NavComponent extends Component {
     state = {};

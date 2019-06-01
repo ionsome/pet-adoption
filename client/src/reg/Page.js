@@ -84,7 +84,7 @@ class RegPage extends Component {
                                 <input onChange={this.regPasswordChangeHandler} value={this.state.regPassword} className="form-control mr-sm-2" type="password" placeholder="Пароль" /><br />
                                 <div className="d-flex flex-column">
                                     <button onClick={this.regButtonClickHandler} className="btn btn-primary" >Регистрация</button>
-                                    <div className="mt-4"><Link to="/login"><a onClick={() => { }} >Войти</a></Link></div>
+                                    <div className="mt-4"><Link to="/login"> Войти</Link></div>
                                 </div>
                             </div>
                         </div>

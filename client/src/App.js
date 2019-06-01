@@ -9,7 +9,7 @@ import AddPage from './add/Page';
 import AuthPage from './auth/Page';
 import RegPage from './reg/Page';
 import Cookies from 'js-cookie';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
     state = {};

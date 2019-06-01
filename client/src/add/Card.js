@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToggleButtonGroup, ToggleButton, Form, Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
+import { ToggleButtonGroup, ToggleButton, Form, ButtonToolbar } from 'react-bootstrap';
 
 class Card extends Component {
   state = {};
@@ -64,7 +64,7 @@ class Card extends Component {
 
     let photoContent;
     if (this.state.imageData) {
-      photoContent = (<img src={this.state.imageData} className="photo-box mb-2"></img>);
+      photoContent = (<img src={this.state.imageData} className="photo-box mb-2" alt="" />);
     }
     else {
       photoContent = '';

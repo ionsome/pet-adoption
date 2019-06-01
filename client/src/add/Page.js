@@ -41,7 +41,6 @@ class CardsPage extends Component {
         Cards.getMyCards().then((Cards) => {
             this.setState({ 'Cards': Cards })
         });
-        console.log(this.state.Cards)
     }
 
     componentDidMount() {
