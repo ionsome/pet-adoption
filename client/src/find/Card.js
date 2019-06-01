@@ -10,36 +10,39 @@ class Card extends Component {
     this.state.age = props.info.age;
     this.state.sex = props.info.sex;
     this.state.bio = props.info.bio;
-    this.state.photo = props.info.photo;
-    
-    this.state.editing = false;
+    this.state.photoId = props.info.photo;
+    this.state.imageData = '';
+
+    this.loadPhoto();
   }
 
-  textClickHandler = () => {
-    console.log('text click');
-    this.setState({
-      editing: true
-    });
-  }
+  loadPhoto = () => {
+    if (!this.state.photoId) {
+      return;
+    }
 
-  saveClickHandler = () => {
-    console.log('save');
-    this.setState({
-      editing: false
-    });
-    this.props.editTaskHandler(this.props.info._id, this.state.text);
-  }
+    fetch('http://localhost:3000/uploads/' + this.state.photoId)
+      .then((res) => res.json())
+      .then((data) => {
+        var base64Flag = 'data:' + data.img.contentType + ';base64,';
+        var imageStr = this.arrayBufferToBase64(data.img.data.data);
+        this.setState({ imageData: base64Flag + imageStr });
+      })
+  };
 
-  inputChangeHandler = (event) => {
-    this.setState({ text: event.target.value });
-  }
+  arrayBufferToBase64 = (buffer) => {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return window.btoa(binary);
+  };
 
   render() {
     let cardContent;
 
     let photoContent;
-    if (this.state.photo) {
-      photoContent = (<img src={this.state.photo} className="photo-box mb-2"></img>);
+    if (this.state.imageData) {
+      photoContent = (<img src={this.state.imageData} className="photo-box mb-2"></img>);
     }
     else {
       photoContent = '';

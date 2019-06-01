@@ -12,6 +12,9 @@ class Card extends Component {
     this.state.sex = props.info.sex;
     this.state.bio = props.info.bio;
     this.state.photo = props.info.photo;
+    this.state.imageData = '';
+
+    this.loadPhoto();
 
     this.state.editing = false;
   }
@@ -35,17 +38,38 @@ class Card extends Component {
     });
   }
 
+
+  loadPhoto = (name) => {
+    if (!this.state.photo) {
+      return;
+    }
+    fetch('http://localhost:3000/uploads/' + this.state.photo)
+      .then((res) => res.json())
+      .then((data) => {
+        var base64Flag = 'data:' + data.img.contentType + ';base64,';
+        var imageStr = this.arrayBufferToBase64(data.img.data.data);
+        this.setState({ imageData: base64Flag + imageStr });
+      })
+  };
+
+  arrayBufferToBase64 = (buffer) => {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return window.btoa(binary);
+  };
+
   render() {
     let cardContent;
 
     let photoContent;
-    if (this.state.photo) {
-      photoContent = (<img src={this.state.photo} className="photo-box mb-2"></img>);
+    if (this.state.imageData) {
+      photoContent = (<img src={this.state.imageData} className="photo-box mb-2"></img>);
     }
     else {
       photoContent = '';
     }
-    
+
     if (this.state.editing) {
       cardContent = (
         <div className="mb-3">
@@ -76,7 +100,7 @@ class Card extends Component {
           </ButtonToolbar>
 
           <Form.Group>
-            <Form.Control onChange={(event) => { this.setState({ name: event.target.value }); }}
+            <Form.Control onChange={(event) => { this.setState({ bio: event.target.value }); }}
               as="textarea" rows="5" placeholder="Информация о питомце (140 символов)" maxLength="140"
               name="bio" value={this.state.bio} className="noresize" />
           </Form.Group>

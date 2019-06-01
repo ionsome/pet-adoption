@@ -1,4 +1,5 @@
 const Card = require('../models/card.model.js');
+const Img = require('../models/img.model.js');
 
 fs = require('fs-extra');
 var path = require('path');
@@ -56,7 +57,7 @@ exports.create = (req, res) => {
         username: req.username
     });
 
-    const mes = validate(name, req.body.age, req.body.sex, req.body.bio)
+    const mes = validate(name, req.body.age, req.body.sex, req.body.bio);
 
     if (mes) {
         return res.status(400).send({
@@ -76,11 +77,25 @@ exports.create = (req, res) => {
 };
 
 exports.uploadPhoto = (req, res) => {
-    res.send({ message: (req.file ? req.file.path : "")  });
+    if (req.file) {
+        var new_img = new Img;
+        new_img.filename = req.file.filename;
+        new_img.img.data = fs.readFileSync(req.file.path)
+        new_img.img.contentType = req.file.mimetype;
+        new_img.save();
+        res.send({ message: req.file.filename });
+    }
+    else {
+        res.send({ message: "" });
+    }
 };
 
 exports.getPhoto = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../uploads/', req.params.photoId));
+    Img.findOne({ 'filename': req.params.photoId })
+        .then(photo => {
+            res.contentType(photo.img.contentType);
+            res.send(photo);
+        }).catch(err => res.status(404).send(''));
 };
 
 exports.findAll = (req, res) => {
@@ -110,18 +125,18 @@ exports.findOne = (req, res) => {
         .then(card => {
             if (!card) {
                 return res.status(404).send({
-                    message: "Task not found with id " + req.params.cardId
+                    message: "Card not found with id " + req.params.cardId
                 });
             }
             res.send(card);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).send({
-                    message: "Task not found with id " + req.params.cardId
+                    message: "Card not found with id " + req.params.cardId
                 });
             }
             return res.status(500).send({
-                message: "Error retrieving task with id " + req.params.cardId
+                message: "Error retrieving card with id " + req.params.cardId
             });
         });
 };
@@ -147,20 +162,21 @@ exports.update = (req, res) => {
         });
     }
 
-    validate(name, req.body.sex, req.body.sex, bio).then((mes) => {
-        if (mes) {
-            return res.status(400).send({
-                message: mes
-            });
-        };
-    })
+    const mes = validate(name, req.body.age, req.body.sex, req.body.bio);
+
+    if (mes) {
+        return res.status(400).send({
+            message: mes
+        });
+    };
 
     // Find task and update it with the request body
     Card.findByIdAndUpdate(req.params.cardId, {
         name: name,
         sex: req.body.sex,
         age: req.body.age,
-        bio: req.body.bio
+        bio: req.body.bio,
+        photo: req.body.photo
     })
         .then(card => {
             if (!card) {

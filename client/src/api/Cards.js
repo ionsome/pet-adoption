@@ -67,9 +67,10 @@ export default {
          },
          body: JSON.stringify({
             'name': props.name,
-            'sex': props.sex,
             'age': props.age,
-            'bio': props.bio
+            'sex': props.sex,
+            'bio': props.bio,
+            'photo': props.photo
          })
       };
 
