@@ -71,12 +71,10 @@ class NavComponent extends Component {
 
         } else {
             authButton = (
-                <div>
-                    <Link className="nodecoration header-button header-login h-100" to="/login">
+                    <Link className="header-button header-login nodecoration text-nowrap align-items-center" to="/login">
                         Войти
                         <img src={house} height="32" className="pl-3" alt="" />
                     </Link>
-                </div>
             )
         }
 
