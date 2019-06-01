@@ -129,3 +129,8 @@ body {
     width: 340px;
   }  
 }
+
+.btn-card-group {
+  min-width: 320px; 
+  margin-left: -10px;
+}

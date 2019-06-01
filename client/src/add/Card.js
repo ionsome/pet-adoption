@@ -142,7 +142,7 @@ class Card extends Component {
         <div className="card card-body-size">
           <div className="card-body col-xs-1" align="center">
             {cardContent}
-            <div>
+            <div className="btn-card-group">
               {removeButton}
               {saveButton}
               {cancelButton}
