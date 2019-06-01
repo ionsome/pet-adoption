@@ -66,17 +66,19 @@ class Card extends Component {
       </div>
     );
 
-    
+
     let seeButton;
 
-    seeButton = (<a href="#" onClick={() => {}} className="btn btn-outline-success task-save-button">Посмотреть</a>);
+    seeButton = (<a href="#" onClick={() => { }} className="btn btn-outline-success task-save-button">Посмотреть</a>);
 
     return (
-      <div className="col col-12 col-md-6 col-lg-4">
+      <div className="col-md-5 col-lg-5" style={{ width: '25rem' }}>
         <div className="card">
-          <div className="card-body">
+          <div className="card-body col-xs-1" align="center">
             {cardContent}
-            {seeButton}
+            <div>
+              {seeButton}
+            </div>
           </div>
         </div>
       </div>
