@@ -7,7 +7,7 @@ module.exports = (app) => {
     const cards = require('../controllers/card.controller.js');
 
     app.post('/api/cards', user.authWrapper(cards.create));
-    app.get('/uploads/:photoId', cards.getPhoto);
+    app.get('/api/photo/:photoId', cards.getPhoto);
     app.post('/api/upload', upload.single('file'), user.authWrapper(cards.uploadPhoto));
     app.get('/api/getMyCards', user.authWrapper(cards.findAll))
     app.get('/api/getAllCards', cards.getAll);

@@ -21,7 +21,7 @@ class Card extends Component {
       return;
     }
 
-    fetch('http://localhost:3000/uploads/' + this.state.photoId)
+    fetch('http://localhost:3000/api/photo/' + this.state.photoId)
       .then((res) => res.json())
       .then((data) => {
         var base64Flag = 'data:' + data.img.contentType + ';base64,';
