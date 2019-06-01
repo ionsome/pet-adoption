@@ -61,20 +61,18 @@ class NavComponent extends Component {
 
         if (this.props.isAuthorized) {
             authButton = (
-                <div>
-                    <Link className="nodecoration header-button header-login h-100" onClick={this.logoutHandler} to="/">
-                        <div>Выйти</div>
-                        <div><img src={house} height="32" className="pl-3" alt="" /></div>
-                    </Link>
-                </div>
+                <Link className="header-button header-login nodecoration text-nowrap align-items-center" onClick={this.logoutHandler} to="/">
+                    <div>Выйти</div>
+                    <div><img src={house} height="32" className="pl-3" alt="" /></div>
+                </Link>
             )
 
         } else {
             authButton = (
-                    <Link className="header-button header-login nodecoration text-nowrap align-items-center" to="/login">
-                        Войти
+                <Link className="header-button header-login nodecoration text-nowrap align-items-center" to="/login">
+                    Войти
                         <img src={house} height="32" className="pl-3" alt="" />
-                    </Link>
+                </Link>
             )
         }
 
