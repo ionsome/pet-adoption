@@ -6,7 +6,7 @@ var path = require('path');
 
 validate = (name, age, sex, bio) => {
 
-    if (!name.match(/^([А-Яа-яA-Za-z]{2,10} ?){1,2}$/)) {
+    if (!name.match(/^([А-Яа-яA-Za-z]{1,20} ?){1,2}$/)) {
         return "Incorrect name.";
     }
 
