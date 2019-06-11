@@ -126,11 +126,16 @@ body {
 
 @media only screen and (max-width: 1400px) {
   .card-body-size {
-    width: 340px;
+    min-width: 320px !important;
+  }  
+}
+
+@media only screen and (max-width: 400px) {
+  .card-body-size {
+    max-width: 320px !important;
   }  
 }
 
 .btn-card-group {
   min-width: 320px; 
-  margin-left: -10px;
 }
